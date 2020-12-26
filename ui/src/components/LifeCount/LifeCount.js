@@ -1,4 +1,4 @@
-import Heart from '../Heart';
+import Heart from './Heart';
 import Grid from '@material-ui/core/grid';
 
 
