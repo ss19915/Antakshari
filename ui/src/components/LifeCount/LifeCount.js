@@ -1,12 +1,13 @@
 import Heart from '../Heart';
 import Grid from '@material-ui/core/grid';
 
-const LifeCount = ({ lifeCount = 0 }) => {
+
+const LifeCount = ({ maxLife = 0, availableLife = 0 }) => {
     let width = 2;
 
     return (
         <Grid container >
-            {Array.from(Array(lifeCount).keys()).map((_, i) => (
+            {Array.from(Array(maxLife).keys()).map((_, i) => (
                 <Grid
                     item
                     lg={width}
@@ -15,7 +16,7 @@ const LifeCount = ({ lifeCount = 0 }) => {
                     xl={width}
                     xs={width}
                 >
-                    <Heart key={`LifeCount_${i}`}/>
+                    <Heart hidden={i >= availableLife} key={`LifeCount_${i}`}/>
                 </Grid>
             ))}
         </Grid>
