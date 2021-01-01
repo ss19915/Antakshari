@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles'
+import { darken } from '@material-ui/core/styles/colorManipulator';
 
 const AttensionStyle = makeStyles((theme) => {
     const defaultValues = {
         color: theme.palette.primary.main,
         innerColor: theme.palette.secondary.main,
         width: '100%',
-        innerWidth: '30%',
+        innerWidth: '50%',
         borderRadius: '50%',
         innerBorder: '5px solid white'
     };
@@ -28,22 +29,27 @@ const AttensionStyle = makeStyles((theme) => {
             justifyContent: 'center',
         }),
         count: ({ 
-                innerWidth = defaultValues.innerWidth,
-                innerColor = defaultValues.innerColor,
+                width = defaultValues.innerWidth,
+                color = defaultValues.innerColor,
                 borderRadius = defaultValues.borderRadius,
-                innerBorder = defaultValues.innerBorder,
+                border = defaultValues.innerBorder,
             })=>({
             position: 'absolute',
             marginTop: '-50%',
-            width: innerWidth,
-            paddingTop: innerWidth,
-            backgroundColor: innerColor,
+            width: width,
+            paddingTop: width,
+            backgroundColor: color,
             borderRadius: borderRadius,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            border: innerBorder,
+            border: border,
+            cursor: 'pointer',
+            '&:hover': {
+                backgroundColor: darken(color, 0.2),
+            },
         }),
+        
         innerCircle: {
             position: 'absolute',
             marginTop: '-50%',
@@ -53,13 +59,13 @@ const AttensionStyle = makeStyles((theme) => {
 });
 
 const Attension = (props) => {
-    const { children = null } = props;
+    const { children = null, onClick = () => {} } = props;
     let clases = AttensionStyle(props);
 
     return (
         <div className={clases.circle}>
             <div className={clases.count}>
-                <div className={clases.innerCircle}>
+                <div onClick={(event) => onClick(event)} className={clases.innerCircle}>
                     {children}
                 </div>
             </div>
