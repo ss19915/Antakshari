@@ -1,11 +1,9 @@
-
-import image from '../../images/team1/p3.jpg';
-import image1 from '../../images/team1/p1.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LifeCount from '../LifeCount';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { teamDetails } from './teamConfig';
 
 const teamStyles = makeStyles({
     root: {
@@ -33,46 +31,48 @@ const teamStyles = makeStyles({
     }
 });
 
+
+const PlayerImage = (props) => {
+    const { image, width = 6 } = props;
+    const clases = teamStyles(props);
+
+    return(
+        <Grid 
+            item
+            lg={width}
+            md={width}
+            sm={width}
+            xl={width}
+            xs={width}
+        >
+            <img className={clases.media} src={image}  />
+        </Grid>
+    );
+};
+
 const Team = (props) => {
     const {
-        teamName = 'Team 1',
         points = 0,
         maxLife = 5,
         availableLife = 5,
+        teamID = 'team1',
     } = props;
 
+    const team = teamDetails[teamID]
     const clases = teamStyles(props);
-    let width = 6;
 
     return(
         <React.Fragment>
-        <div className={clases.root}>
-        <Typography className={clases.header} >{teamName}</Typography>
-        <Typography className={clases.foreGround} variant='h6' >Points: {points}</Typography>
+            <div className={clases.root}>
+                <Typography className={clases.header} >{team.name}</Typography>
+                <Typography className={clases.foreGround} variant='h6' >Points: {points}</Typography>
                 <Grid container>
-                    <Grid 
-                        item
-                        lg={width}
-                        md={width}
-                        sm={width}
-                        xl={width}
-                        xs={width}
-                    >
-                        <img className={clases.media} src={image}  />
-                    </Grid>
-                    <Grid
-                        item
-                        lg={width}
-                        md={width}
-                        sm={width}
-                        xl={width}
-                        xs={width}
-                    >
-                        <img className={clases.media} src={image1} />
-                    </Grid>
+                    {team.images.map((image, index) => (
+                            <PlayerImage key={`playerImage${index}`} clases={clases} image={image}/>
+                    ))}
                 </Grid>
             </div>
-        <LifeCount  maxLife={maxLife} availableLife={availableLife} />
+            <LifeCount  maxLife={maxLife} availableLife={availableLife} />
         </React.Fragment>
     );
 };
