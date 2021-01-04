@@ -9,6 +9,7 @@ const LifeCount = ({ maxLife = 0, availableLife = 0 }) => {
         <Grid container >
             {Array.from(Array(maxLife).keys()).map((_, i) => (
                 <Grid
+                    key={`LifeCount_${i}`}
                     item
                     lg={width}
                     md={width}
@@ -16,7 +17,7 @@ const LifeCount = ({ maxLife = 0, availableLife = 0 }) => {
                     xl={width}
                     xs={width}
                 >
-                    <Heart hidden={i >= availableLife} key={`LifeCount_${i}`}/>
+                    <Heart hidden={i >= availableLife} />
                 </Grid>
             ))}
         </Grid>

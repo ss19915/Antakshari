@@ -10,10 +10,21 @@ const teamStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column-reverse',
     } : null) ,
-    profile: {
-        position: 'relative',
-        borderRadius: '3%',
-        overflow: 'hidden'
+    profile: ({active}) => {
+        let border = '5px solid white';
+
+        if(active > 0 ){
+            border = '5px solid green';
+        }
+        else if(active < 0){
+            border = '5px solid red';
+        }
+        return({
+            position: 'relative',
+            borderRadius: '3%',
+            border: border,
+            overflow: 'hidden',
+        });
     },
     foreGround: {
         position: 'absolute',
@@ -32,7 +43,25 @@ const teamStyles = makeStyles({
         display: 'flex',
         background: 'linear-gradient(127deg, rgba(0,155,100,.8), rgba(0,255,0,0) 70.71%), linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)',
         width: '100%'
-    }
+    },
+    abc: ({active}) => {
+        console.log(active);
+        let background = '';
+        
+        if (active < 0){
+            background = 'rgba(255,0,0,.5)';
+        }
+        else if(active > 0){
+            background = 'rgba(0,155,0,.2)';
+        }
+
+        return ({
+            position: 'absolute',
+            background: background,
+            width: '100%',
+            paddingBottom: '100%'
+        });
+    },
 });
 
 
@@ -68,6 +97,7 @@ const Team = (props) => {
     return(
         <div className={clases.root}>
             <div className={clases.profile}>
+                <div className={clases.abc}></div>
                 <Typography className={clases.header} >{team.name}</Typography>
                 <Typography className={clases.foreGround} variant='h6' >Points: {points}</Typography>
                 <Grid container>

@@ -89,7 +89,8 @@ const Home = (props) => {
                     <Team
                         teamID='theGlitch'
                         points={9}
-                        availableLife={1}
+                        availableLife={2}
+                        active={1}
                     />
                 }
                 Mid=''
@@ -130,6 +131,7 @@ const Home = (props) => {
                         teamID='boomShakalaka'
                         points={5}
                         availableLife={3}
+                        active={-1}
                     />
                 }
                 Mid=''
