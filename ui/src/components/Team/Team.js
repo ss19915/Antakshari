@@ -6,7 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import { teamDetails } from './teamConfig';
 
 const teamStyles = makeStyles({
-    root: {
+    root: ({reverse}) => ( reverse ? {
+        display: 'flex',
+        flexDirection: 'column-reverse',
+    } : null) ,
+    profile: {
         position: 'relative',
         borderRadius: '3%',
         overflow: 'hidden'
@@ -45,7 +49,7 @@ const PlayerImage = (props) => {
             xl={width}
             xs={width}
         >
-            <img className={clases.media} src={image}  />
+            <img alt='img' className={clases.media} src={image} />
         </Grid>
     );
 };
@@ -62,8 +66,8 @@ const Team = (props) => {
     const clases = teamStyles(props);
 
     return(
-        <React.Fragment>
-            <div className={clases.root}>
+        <div className={clases.root}>
+            <div className={clases.profile}>
                 <Typography className={clases.header} >{team.name}</Typography>
                 <Typography className={clases.foreGround} variant='h6' >Points: {points}</Typography>
                 <Grid container>
@@ -73,7 +77,7 @@ const Team = (props) => {
                 </Grid>
             </div>
             <LifeCount  maxLife={maxLife} availableLife={availableLife} />
-        </React.Fragment>
+        </div>
     );
 };
 
