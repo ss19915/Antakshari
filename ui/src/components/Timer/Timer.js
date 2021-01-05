@@ -2,8 +2,16 @@ import { Attension } from '../HOC';
 import Grid from '@material-ui/core/grid';
 import Typograph from '@material-ui/core/Typography';
 
-const Timer = () => {
+const Timer = (props) => {
     const centerWidth = 6, sideWidth = 3;
+    const {
+        startTimer,
+        pauseTimer,
+        updateTimer,
+        resetTimer,
+        timer = {},
+    } = props;
+
     return (
         <Grid container>
             <Grid 
@@ -14,7 +22,7 @@ const Timer = () => {
                 xl={sideWidth}
                 xs={sideWidth}
             >
-                <Attension>Start</Attension>
+                <Attension >Start</Attension>
             </Grid>
             <Grid
                 item
@@ -25,7 +33,7 @@ const Timer = () => {
                 xs={centerWidth}
             >
                 <Attension innerWidth='40%'>
-                    <Typograph variant='h1'>00</Typograph>
+                    <Typograph onClick={() => { timer.active ? pauseTimer() : startTimer()}} variant='h1'>{timer.time}</Typograph>
                 </Attension>
             </Grid>
             <Grid
@@ -36,7 +44,7 @@ const Timer = () => {
                 xl={sideWidth}
                 xs={sideWidth}
             >
-                <Attension>Reset</Attension>
+                <Attension onClick={resetTimer}>Reset</Attension>
             </Grid>
         </Grid>
     );

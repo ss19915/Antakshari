@@ -45,7 +45,6 @@ const teamStyles = makeStyles({
         width: '100%'
     },
     abc: ({active}) => {
-        console.log(active);
         let background = '';
         
         if (active < 0){
