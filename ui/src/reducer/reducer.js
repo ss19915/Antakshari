@@ -8,7 +8,10 @@ const {
     Timer,
     UpdateCharacter,
 } = constants;
-const initialState = { timer: {time: timerPerTurn}};
+const initialState = {
+    timer: { time: timerPerTurn },
+    game: {},
+};
 
 const reducer = ( state = initialState, action) => {
     switch(action.type){
@@ -36,7 +39,8 @@ const reducer = ( state = initialState, action) => {
         case UpdateCharacter:
             return({
                 ...state,
-                game: { ...state.game, character: action.character}
+                game: { ...state.game, character: action.character},
+                timer: { ...state.timer, time: timerPerTurn, active: Timer.active}
             });
             
         default: 
