@@ -7,15 +7,19 @@ export const InitialState = {
     game: {
         [TeamIDs[0]]: {
             points: 0,
+            status: 0,
         },
         [TeamIDs[1]]: {
             points: 0,
+            status: 0,
         },
         [TeamIDs[2]]: {
             points: 0,
+            status: 0,
         },
         [TeamIDs[3]]: {
             points: 0,
+            status: 0,
         },
         activeTeamIndex: InitialTeam,
     },

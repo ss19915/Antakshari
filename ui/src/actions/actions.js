@@ -8,15 +8,16 @@ const {
     ResetTimer,
     UpdateCharacter,
     UpdateActiveTeam,
+    IncrementTeamPoint,
 } = constants;
 
-export const startTimer = {
+export const startTimer = ({
     type: StartTimer,
-};
+});
 
-export const pauseTimer = {
+export const pauseTimer = ({
     type: PauseTimer,
-};
+});
 
 export const updateTimer = (time) => ({
     type: UpdateTimer,
@@ -45,4 +46,8 @@ const getNextTeamIndex = (currentIndex) => {
 export const updateActiveTeam = (activeTeamIndex) => ({
     type: UpdateActiveTeam,
     teamIndex: getNextTeamIndex(activeTeamIndex),
+});
+
+export const incrementTeamPoint =({
+    type: IncrementTeamPoint,
 });

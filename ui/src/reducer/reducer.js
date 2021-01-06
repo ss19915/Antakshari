@@ -1,5 +1,5 @@
 import constants from '../constants';
-import { timerPerTurn, InitialState } from '../config';
+import { timerPerTurn, InitialState, TeamIDs } from '../config';
 import _ from 'lodash';
 
 const {
@@ -10,6 +10,7 @@ const {
     Timer,
     UpdateCharacter,
     UpdateActiveTeam,
+    IncrementTeamPoint,
 } = constants;
 
 const reducer = ( state = InitialState, action) => {
@@ -46,7 +47,24 @@ const reducer = ( state = InitialState, action) => {
                 ...state,
                 game: { ..._.cloneDeep(state.game), activeTeamIndex: action.teamIndex},
             });
-            
+        case IncrementTeamPoint: {
+            const updatedGame = _.cloneDeep(state.game);
+            const activeTeamIndex = updatedGame.activeTeamIndex;
+            const activeTeamID = TeamIDs[activeTeamIndex];
+
+            TeamIDs.map((teamID) => {
+                const status = updatedGame[teamID].status;
+
+                if(teamID !== activeTeamID && status > -1){
+                    updatedGame[teamID].points += 1;
+                }
+            });
+
+            return ({
+                ...state,
+                game: updatedGame,
+            });
+        }
         default: 
             return state;
     }

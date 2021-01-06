@@ -7,7 +7,6 @@ const ActiveCharacterLogic = (props) => {
         activeTeamIndex,
         ...otherProps
     } = props;
-    console.log(props)
 
     const guessedCorrectly = () => {
         updateActiveTeam( activeTeamIndex );

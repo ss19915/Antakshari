@@ -9,6 +9,7 @@ const mapDispatchToProps = (dispatch) => ({
     updateTimer: (time) => dispatch(actions.updateTimer(time)),
     resetTimer: () => dispatch(actions.resetTimer),
     updateActiveTeam: (activeTeamIndex) => dispatch(actions.updateActiveTeam(activeTeamIndex)),
+    incrementTeamPoint: () => dispatch(actions.incrementTeamPoint),
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )(Timer);
