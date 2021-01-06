@@ -4,18 +4,19 @@ import ActiveCharacter from './ActiveCharacter';
 const ActiveCharacterLogic = (props) => {
     const {
         updateActiveTeam,
-        activeTeamIndex,
+        game,
         ...otherProps
     } = props;
-
+    const character = game.character;
     const guessedCorrectly = () => {
-        updateActiveTeam( activeTeamIndex );
+        updateActiveTeam(game);
     };
 
     
     return (
         <ActiveCharacter
             onClick={() => guessedCorrectly()}
+            character={character}
             {...otherProps}
         />
     );

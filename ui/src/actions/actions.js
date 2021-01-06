@@ -44,10 +44,24 @@ const getNextTeamIndex = (currentIndex) => {
     return currentIndex + 1 ;
 };
 
-export const updateActiveTeam = (activeTeamIndex) => ({
-    type: UpdateActiveTeam,
-    teamIndex: getNextTeamIndex(activeTeamIndex),
-});
+export const updateActiveTeam = (game) => {
+    const currentIndex = game.activeTeamIndex;
+    let nextIndex = currentIndex;
+
+    for( let i = 0; i< TeamIDs.length; i++){
+        nextIndex = getNextTeamIndex(nextIndex);
+        const status = game[TeamIDs[nextIndex]].status;
+
+        if( status > -1 ){
+            break;
+        }
+    }
+
+    return({
+        type: UpdateActiveTeam,
+        teamIndex: nextIndex,
+    });
+};
 
 export const incrementTeamPoint =({
     type: IncrementTeamPoint,

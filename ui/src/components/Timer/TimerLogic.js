@@ -28,15 +28,15 @@ class TimerLogic extends React.Component {
 
     failedToSing = () =>  {
         const {
-            activeTeamIndex,
             updateActiveTeam,
             incrementTeamPoint,
             decreaseLife,
+            game,
         } = this.props;
         
         incrementTeamPoint();
         decreaseLife();
-        updateActiveTeam(activeTeamIndex);
+        updateActiveTeam(game);
     }
 
     render() {

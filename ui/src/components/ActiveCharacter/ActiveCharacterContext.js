@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import actions from '../../actions';
 
-const mapStateToProps = ({game: { character, activeTeamIndex}}) => ({ character, activeTeamIndex });
+const mapStateToProps = ({game}) => ({ game });
 
 const mapDispatchToProps = (dispatch) => ({
-    updateActiveTeam: (activeTeamIndex) => dispatch(actions.updateActiveTeam(activeTeamIndex)),
+    updateActiveTeam: (game) => dispatch(actions.updateActiveTeam(game)),
 });
 
 export default connect( mapStateToProps, mapDispatchToProps )(ActiveCharacter);

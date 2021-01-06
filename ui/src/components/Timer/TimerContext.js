@@ -2,13 +2,13 @@ import Timer from './TimerLogic';
 import actions from '../../actions';
 import { connect } from 'react-redux';
 
-const mapStateToProps = ({timer, game: { activeTeamIndex }}) => ({ timer, activeTeamIndex });
+const mapStateToProps = ({timer, game }) => ({ timer, game });
 const mapDispatchToProps = (dispatch) => ({
     startTimer: () => dispatch(actions.startTimer),
     pauseTimer: () => dispatch(actions.pauseTimer),
     updateTimer: (time) => dispatch(actions.updateTimer(time)),
     resetTimer: () => dispatch(actions.resetTimer),
-    updateActiveTeam: (activeTeamIndex) => dispatch(actions.updateActiveTeam(activeTeamIndex)),
+    updateActiveTeam: (game) => dispatch(actions.updateActiveTeam(game)),
     incrementTeamPoint: () => dispatch(actions.incrementTeamPoint),
     decreaseLife: () => dispatch(actions.decreaseLife),
 });
