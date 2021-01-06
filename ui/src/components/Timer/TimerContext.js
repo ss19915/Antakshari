@@ -2,7 +2,7 @@ import Timer from './TimerLogic';
 import actions from '../../actions';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => (state);
+const mapStateToProps = ({timer}) => ({ timer });
 const mapDispatchToProps = (dispatch) => ({
     startTimer: () => dispatch(actions.startTimer),
     pauseTimer: () => dispatch(actions.pauseTimer),

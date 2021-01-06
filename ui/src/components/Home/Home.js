@@ -7,6 +7,7 @@ import HindiKeyboard from '../HindiKeyboard';
 import EnglishKeyboard from '../EnglishKeyboard';
 import Timer from '../Timer';
 import ActiveCharacter from '../ActiveCharacter';
+import { TeamIDs } from '../../config';
 
 const LefiSide = ({sideWidth, ...otherProps}) => (
     <Grid
@@ -87,18 +88,13 @@ const Home = (props) => {
                 sideWidth={sideWidth}
                 Top={ 
                     <Team
-                        teamID='theGlitch'
-                        points={9}
-                        availableLife={2}
-                        active
+                        teamID={TeamIDs[0]}
                     />
                 }
                 Mid=''
                 Bottom={
                     <Team
-                        teamID='whistlePodu'
-                        points={7}
-                        availableLife={2}
+                        teamID={TeamIDs[3]}
                         reverse
                     />
                 }
@@ -128,18 +124,13 @@ const Home = (props) => {
                 sideWidth={sideWidth}
                 Top={
                     <Team
-                        teamID='boomShakalaka'
-                        points={5}
-                        availableLife={3}
-                        active={-1}
+                        teamID={TeamIDs[1]}
                     />
                 }
                 Mid=''
                 Bottom={
                     <Team
-                        teamID='chaosMonkeys'
-                        points={8}
-                        availableLife={2}
+                        teamID={TeamIDs[2]}
                         reverse
                     /> 
                 }

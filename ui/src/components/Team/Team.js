@@ -4,6 +4,7 @@ import LifeCount from '../LifeCount';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { teamDetails } from './teamConfig';
+import { MaxLife } from '../../config';
 
 const teamStyles = makeStyles({
     root: ({reverse}) => ( reverse ? {
@@ -85,8 +86,8 @@ const PlayerImage = (props) => {
 const Team = (props) => {
     const {
         points = 0,
-        maxLife = 5,
-        availableLife = 5,
+        maxLife = MaxLife,
+        availableLife = MaxLife,
         teamID = 'team1',
     } = props;
 

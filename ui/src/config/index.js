@@ -1,7 +1,15 @@
 import {
-    timerPerTurn
+    timerPerTurn,
+    InitialTeam,
+    TeamIDs,
+    MaxLife,
+    InitialState
 } from './config';
 
 export {
-    timerPerTurn
+    timerPerTurn,
+    InitialTeam,
+    TeamIDs,
+    MaxLife,
+    InitialState,
 };

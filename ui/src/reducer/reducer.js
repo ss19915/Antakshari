@@ -1,5 +1,5 @@
 import constants from '../constants';
-import { timerPerTurn } from '../config';
+import { timerPerTurn, InitialState } from '../config';
 const {
     StartTimer,
     PauseTimer,
@@ -8,12 +8,8 @@ const {
     Timer,
     UpdateCharacter,
 } = constants;
-const initialState = {
-    timer: { time: timerPerTurn },
-    game: {},
-};
 
-const reducer = ( state = initialState, action) => {
+const reducer = ( state = InitialState, action) => {
     switch(action.type){
         case StartTimer:
             return({
