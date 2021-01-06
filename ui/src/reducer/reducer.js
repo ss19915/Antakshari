@@ -11,6 +11,7 @@ const {
     UpdateCharacter,
     UpdateActiveTeam,
     IncrementTeamPoint,
+    DecreaseLife
 } = constants;
 
 const reducer = ( state = InitialState, action) => {
@@ -65,6 +66,24 @@ const reducer = ( state = InitialState, action) => {
                 game: updatedGame,
             });
         }
+        case DecreaseLife: {
+            const updatedGame = _.cloneDeep(state.game);
+            const activeTeamIndex = state.game.activeTeamIndex;
+            const activeTeamID = TeamIDs[activeTeamIndex];
+            const activeTeamDetails = updatedGame[activeTeamID];
+            if(activeTeamDetails.availableLife > 0){
+                activeTeamDetails.availableLife -= 1;
+            }
+            if(activeTeamDetails.availableLife === 0) {
+                activeTeamDetails.status = -1;
+            }
+            
+            return ({
+                ...state,
+                game: updatedGame,
+            });
+        }
+
         default: 
             return state;
     }

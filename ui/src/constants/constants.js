@@ -5,6 +5,7 @@ export const ResetTimer = 'ResetTimer';
 export const UpdateCharacter = 'UpdateCharacter';
 export const UpdateActiveTeam = 'UpdateActiveTeam';
 export const IncrementTeamPoint = 'IncrementTeamPoint';
+export const DecreaseLife = 'DecreaseLife';
 
 //timer state
 export const Timer = {

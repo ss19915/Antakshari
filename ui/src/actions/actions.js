@@ -9,6 +9,7 @@ const {
     UpdateCharacter,
     UpdateActiveTeam,
     IncrementTeamPoint,
+    DecreaseLife,
 } = constants;
 
 export const startTimer = ({
@@ -50,4 +51,8 @@ export const updateActiveTeam = (activeTeamIndex) => ({
 
 export const incrementTeamPoint =({
     type: IncrementTeamPoint,
+});
+
+export const decreaseLife = ({
+    type: DecreaseLife,
 });
