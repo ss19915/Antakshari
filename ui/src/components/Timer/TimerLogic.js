@@ -7,7 +7,7 @@ class TimerLogic extends React.Component {
         this.timerLastUpdateTime = null;
     }
 
-    startTimer() {
+    startTimer = () => {
         setTimeout( () => {
             const { timer, updateTimer, pauseTimer } = this.props;
             const { time } = timer;
@@ -26,6 +26,11 @@ class TimerLogic extends React.Component {
         }, 1000);
     }
 
+    failedToSing = () =>  {
+        const { activeTeamIndex, updateActiveTeam } = this.props;
+        updateActiveTeam(activeTeamIndex)
+    }
+
     render() {
         const {
             timer,
@@ -41,7 +46,7 @@ class TimerLogic extends React.Component {
         }
 
         return (
-            <Timer {...this.props} />
+            <Timer {...this.props} failedToSing={this.failedToSing} />
         );
     }
 }

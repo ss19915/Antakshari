@@ -1,6 +1,12 @@
-import ActiveCharacter from './ActiveCharacter';
+import ActiveCharacter from './ActiveCharacterLogic';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (state) => ({ character: state.game.character });
+import actions from '../../actions';
 
-export default connect(mapStateToProps)(ActiveCharacter);
+const mapStateToProps = ({game: { character, activeTeamIndex}}) => ({ character, activeTeamIndex });
+
+const mapDispatchToProps = (dispatch) => ({
+    updateActiveTeam: (activeTeamIndex) => dispatch(actions.updateActiveTeam(activeTeamIndex)),
+});
+
+export default connect( mapStateToProps, mapDispatchToProps )(ActiveCharacter);

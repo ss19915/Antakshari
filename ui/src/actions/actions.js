@@ -1,4 +1,5 @@
 import constants from '../constants';
+import { TeamIDs } from '../config';
 
 const {
     StartTimer,
@@ -6,6 +7,7 @@ const {
     UpdateTimer,
     ResetTimer,
     UpdateCharacter,
+    UpdateActiveTeam,
 } = constants;
 
 export const startTimer = {
@@ -28,4 +30,19 @@ export const resetTimer = {
 export const updateCharacter = (character) => ({
     type: UpdateCharacter,
     character,
+});
+
+
+const getNextTeamIndex = (currentIndex) => {
+
+    if(currentIndex + 1 === TeamIDs.length){
+        return 0;
+    }
+
+    return currentIndex + 1 ;
+};
+
+export const updateActiveTeam = (activeTeamIndex) => ({
+    type: UpdateActiveTeam,
+    teamIndex: getNextTeamIndex(activeTeamIndex),
 });

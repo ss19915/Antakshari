@@ -1,5 +1,7 @@
 import constants from '../constants';
 import { timerPerTurn, InitialState } from '../config';
+import _ from 'lodash';
+
 const {
     StartTimer,
     PauseTimer,
@@ -7,6 +9,7 @@ const {
     ResetTimer,
     Timer,
     UpdateCharacter,
+    UpdateActiveTeam,
 } = constants;
 
 const reducer = ( state = InitialState, action) => {
@@ -35,8 +38,13 @@ const reducer = ( state = InitialState, action) => {
         case UpdateCharacter:
             return({
                 ...state,
-                game: { ...state.game, character: action.character},
+                game: { ..._.cloneDeep(state.game), character: action.character},
                 timer: { ...state.timer, time: timerPerTurn, active: Timer.active}
+            });
+        case UpdateActiveTeam:
+            return ({
+                ...state,
+                game: { ..._.cloneDeep(state.game), activeTeamIndex: action.teamIndex},
             });
             
         default: 

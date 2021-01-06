@@ -7,11 +7,11 @@ const styles = makeStyles({
         color: 'black',
     }
 });
-const ActiveCharacter = ({character = 'क',  ...props}) => {
+const ActiveCharacter = ({character = 'क',  onClick, ...props}) => {
     const classes = styles(props);
 
     return(
-        <Attension width='15%' color='#fff' border='none' innerColor='#fff' >
+        <Attension onClick={onClick} width='15%' color='#fff' border='none' innerColor='#fff' >
             <Typography className={classes.root} variant='h1'>{character}</Typography>
         </Attension>
     );

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import Team from './Team';
+import { TeamIDs } from '../../config';
 
 const TeamContext = (props) => { 
     const {
@@ -9,10 +10,10 @@ const TeamContext = (props) => {
     } = props;
 
     const gameDetails= game[teamID];
-    const activeTeam = game.activeTeam;
+    const activeTeamIndex = game.activeTeamIndex;
 
     let active = gameDetails.status;
-    if(activeTeam === teamID){
+    if(TeamIDs[activeTeamIndex] === teamID){
         active = 1;
     }
 
