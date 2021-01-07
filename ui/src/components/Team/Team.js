@@ -3,8 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import LifeCount from '../LifeCount';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { teamDetails } from './teamConfig';
-import { MaxLife } from '../../config';
+import { MaxLife, teamDetails } from '../../config';
 
 const teamStyles = makeStyles({
     root: ({reverse}) => ( reverse ? {
