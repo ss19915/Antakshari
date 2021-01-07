@@ -18,6 +18,21 @@ const generateCharacters = (startCode, length) => {
     return characters;
 }
 
+const getRandomNumber = (maxNumber) => Math.round(maxNumber * Math.random());
+
+const generateRandomCharacters = () => {
+    if(Math.random() > 0.5){
+        const randomCharacterIndex = getRandomNumber(5);
+
+        return String.fromCharCode(hindiCharacterStartCode + randomCharacterIndex);
+    }
+    else {
+        const randomCharacterIndex = getRandomNumber(hindiLetterCharactersLength -1);
+
+        return String.fromCharCode(hindiCharacterStartCode + hindiVowelCharactersLenght + randomCharacterIndex);
+    }
+}
+
 const Hindikeyboard = ({ onClick = () => { } }) => {
     const width = 12;
     const hindiVowelCharacters = generateCharacters(hindiCharacterStartCode, hindiVowelCharactersLenght);
@@ -51,6 +66,7 @@ const Hindikeyboard = ({ onClick = () => { } }) => {
                     {hindiLetterCharacters.map((letter) => (
                         <Button key={letter} onClick={() => onClick(letter)}>{letter}</Button>
                     ))}
+                    <Button onClick={() => onClick(generateRandomCharacters())}>?</Button>
                 </Paper>
             </Grid>
         </Grid>
