@@ -6,6 +6,7 @@ export const UpdateCharacter = 'UpdateCharacter';
 export const UpdateActiveTeam = 'UpdateActiveTeam';
 export const IncrementTeamPoint = 'IncrementTeamPoint';
 export const DecreaseLife = 'DecreaseLife';
+export const UpdateLastTurn = 'UpdateLastTurn';
 
 //timer state
 export const Timer = {

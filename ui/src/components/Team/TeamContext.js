@@ -16,7 +16,7 @@ const TeamContext = (props) => {
     if(TeamIDs[activeTeamIndex] === teamID){
         active = 1;
     }
-
+    
     return(
         <Team
             active={active}
