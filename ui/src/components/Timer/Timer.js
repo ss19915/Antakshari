@@ -47,7 +47,7 @@ const Timer = (props) => {
                 xl={centerWidth}
                 xs={centerWidth}
             >
-                <Attension innerWidth='40%'>
+                <Attension >
                     <Typograph onClick={() => { timer.active ? pauseTimer() : startTimer()}} variant='h1'>{timer.time}</Typograph>
                 </Attension>
             </Grid>

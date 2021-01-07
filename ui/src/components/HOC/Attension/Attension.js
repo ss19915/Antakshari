@@ -29,8 +29,8 @@ const AttensionStyle = makeStyles((theme) => {
             justifyContent: 'center',
         }),
         count: ({ 
-                width = defaultValues.innerWidth,
-                color = defaultValues.innerColor,
+                innerWidth: width = defaultValues.innerWidth,
+                innerColor: color = defaultValues.innerColor,
                 borderRadius = defaultValues.borderRadius,
                 border = defaultValues.innerBorder,
             })=>({
